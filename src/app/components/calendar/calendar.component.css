@@ -1,0 +1,91 @@
+.week {
+	display: flex;
+	flex-direction: row;
+	border-right: 1px solid #e0e0e0;
+	font-size: 13px;
+}
+.week:last-child {
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.week-date {
+	padding: 5px;
+	display: block;
+	width: calc(100%/7); 
+	min-height: 100px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	position: relative;
+	border-left: 1px solid #e0e0e0;
+	border-top: 1px solid #e0e0e0;
+ }
+.week-date.month-header {
+	min-height: auto;
+	color: #fff;
+	padding: 3px;
+	background-color: #0091ca;
+	justify-content: center;
+}
+ 
+.week-date .day-number, .week-date .day-number a,
+.week-date .day-number, .week-date .day-number span {
+	display: flex;
+    flex-shrink: 0;
+    flex-grow: 3;
+    -webkit-flex-grow: 3;
+	justify-content: flex-start;
+	color: #000;
+	font-weight:bold;
+}
+.week-date .day-number, .week-date .day-number a.clearall {
+	justify-content: flex-end;
+	color: #a00000;
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+}
+.week-date .day-number a.clearall {
+	font-size: 20px;
+	margin-top: -5px;
+}
+.week-date .day-number.disabled span {
+	color: #aaa;
+	font-weight:normal;
+}
+.currmonthname {
+	font-size: 20px;
+	vertical-align: middle;
+	font-weight:bold;
+	width: 14em;
+	display: inline-block;
+}
+.week-date.satsun {
+	background-color: #ffffe6;
+}
+.week-date.today {
+	background-color: #c5f3fc;
+}
+
+
+.week-date .overflowcont {
+	flex: 0 0 100%;
+	justify-content: flex-start;
+	overflow: hidden;
+	max-height: 80px;
+	transition: max-height .15s ease-in-out;
+}
+.week-date .overflowcont.expanded {
+	max-height: 100%;
+}
+.week-date reminder {
+	flex: 0 0 100%;
+}
+.viewmore, .viewless {
+	font-size: 12px;
+	color: #999;
+	text-align: center;
+	display: block;
+	width: 100%;
+	margin-top: 3px;
+}

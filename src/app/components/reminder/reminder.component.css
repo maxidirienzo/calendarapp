@@ -1,0 +1,54 @@
+ .reminder {
+	margin-top: 4px;
+ 	padding: 3px;
+	font-size: 12px;
+    word-break: break-word;
+}
+ .reminder a {
+	display: block;
+	color: inherit;
+}
+ .reminder a.deletereminder {
+	float: right; 
+	background-color: #ea2803;
+	color: #fff;
+	padding: 0px 4px 3px;;
+	font-weight:bold;
+	border-radius: 2px;
+	font-size: 17px;
+	line-height: 17px;
+	opacity: 0;
+}
+.reminder:hover a.deletereminder {
+	display: inline-block;
+	opacity: 1;
+	transition: opacity .15s ease-in-out;
+}
+.reminder a.deletereminder:hover {
+	text-decoration: none;
+}
+
+.reminder.green {
+	color: #fff	!important;
+    background-color: #218838;
+    border-color: #1e7e34;	
+}
+.reminder.yellow {
+	color: #666	!important;
+    background-color: #eff59f;
+    border-color: #efe972;	
+}
+.reminder.red {
+    color: #721c24 !important;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.reminder.gradient {
+	color: #000	!important;
+	border: 1px solid #cccc00;
+	background: #f3c5bd; /* Old browsers */
+	background: -moz-linear-gradient(-45deg, #f3c5bd 0%, #e86c57 19%, #ea2803 46%, #ea2803 46%, #ff6600 74%, #c72200 94%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg, #f3c5bd 0%,#e86c57 19%,#ea2803 46%,#ea2803 46%,#ff6600 74%,#c72200 94%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(135deg, #f3c5bd 0%,#e86c57 19%,#ea2803 46%,#ea2803 46%,#ff6600 74%,#c72200 94%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3c5bd', endColorstr='#c72200',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}

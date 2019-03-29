@@ -1,0 +1,55 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{opTitle}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.close(false)">
+	<span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+	<div class="row">
+		<div class="form-group col-12">
+		  <label>Date</label>
+		  <div class="input-group">
+			<input class="form-control" placeholder="mm/dd/YYYY"
+				   name="dp" [(ngModel)]="tmpdate" ngbDatepicker #d="ngbDatepicker">
+			<div class="input-group-append">
+			  <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+			</div>
+		  </div>
+		</div>		
+		<div class="form-group col-6">
+			<label>Hour</label>
+			<select class="form-control" [(ngModel)]="tmphour">
+				<option *ngFor="let h of hours" value="{{h.id}}">{{h.l}}</option>
+			</select>
+		</div>
+		<div class="form-group col-6">
+			<label>Minute</label>
+			<select class="form-control" [(ngModel)]="tmpminute">
+				<option *ngFor="let m of minutes" value="{{m.id}}">{{m.l}}</option>
+			</select>
+		</div>
+		
+		<div class="form-group col-12">
+			<label>Reminder</label>
+			<input type="text" class="form-control" maxlength="50" [(ngModel)]="reminder.text" />
+		</div>
+
+		<div class="col-12">
+			<label>Style</label>
+			<select class="form-control" [(ngModel)]="reminder.classname">
+				<option></option>
+				<option *ngFor="let c of classesAvail" value="{{c.classname}}">{{c.description}}</option>
+			</select>
+		</div>
+	</div>
+	<div class="row" *ngIf="showError" style="margin-top: 15px;">
+		<div class="col-12">
+			<div class="alert alert-danger">{{errorMessage}}</div>
+		</div>
+	</div>
+	
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-success" (click)="confirm()">Confirm</button>
+	<button type="button" class="btn btn-danger" (click)="activeModal.close(false)">Close</button>
+</div>

@@ -1,0 +1,7 @@
+<div class="reminder {{reminder.classname}}">
+	<a class="deletereminder" href="javascript:void(0)" title="Delete" (click)="deleteReminder()">×</a>
+	<a href="javascript:void(0)" (click)="updateReminder()">
+		{{reminder.dateobj.format('LT')}}<br/>
+		{{reminder.text}}
+	</a>
+</div>

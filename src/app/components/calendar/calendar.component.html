@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="col-12 text-center">
+		<a href="javascript:void(0)" (click)="prevMonth()" class="btn-primary btn-sm">prev</a>
+		<span class="currmonthname">{{getCurrentMonth()}}</span>
+		<a href="javascript:void(0)" (click)="nextMonth()" class="btn-primary btn-sm">next</a>
+		<a href="javascript:void(0)" style="margin-left: 15px;" (click)="currMonth()" class="btn-success btn-sm">today</a>
+	</div>
+</div>
+
+<div class="week">
+	<div class="week-date month-header" *ngFor="let d of dayNames">
+		{{d}}
+	</div>
+</div>
+<div class="week" *ngFor="let week of weeks">
+	<div class="week-date" *ngFor="let day of week" [ngClass]="{satsun: day.day==0||day.day==6, today: day.today}">
+		<div class="day-number" [ngClass]="{disabled: !day.currmonth}">
+			<span *ngIf="!day.currmonth">{{day.date}}</span>
+			<a *ngIf="day.currmonth" href="javascript:void(0)" title="Add new reminder" (click)="addReminder(day.dateobj)">{{day.date}}</a>
+			<a href="javascript:void(0)" title="Clear day" class="clearall" (click)="clearDay(day.dateobj)" *ngIf="day.reminders.length||0>0">×</a>
+		</div>
+		
+		<div class="overflowcont" [ngClass]="{expanded: day.expand}">
+			<reminder *ngFor="let r of day.reminders" [reminder]="r" (delete)="deleteReminder($event)" (update)="updateReminder($event)"></reminder>
+		</div>
+		
+		<a href="javascript:void(0)" class="viewmore" *ngIf="day.reminders.length>1 && !day.expand" (click)="day.expand = true">view more</a>
+		<a href="javascript:void(0)" class="viewless" *ngIf="day.reminders.length>1 && day.expand" (click)="day.expand = false">view less</a>
+	</div>
+</div>
