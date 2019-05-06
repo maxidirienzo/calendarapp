@@ -1,0 +1,31 @@
+<div class="gallery">
+
+  <nav>
+    <p>{{getIndexText()}}</p>
+    <a class="action zoom" icon="zoom_out" (click)="zoomOut()" [ngClass]="{active:(hasZoomOut() === true)}">-</a>
+    <a class="action zoom" icon="zoom_in" (click)="zoomIn()" [ngClass]="{active:(hasZoomIn() === true)}">+ {{currentZoom}}</a>
+    <a class="action close" (click)="doClose()">X</a>
+  </nav>
+
+  <div (swipe)="swipeevent($event)">
+    <ul class="pictures" [ngStyle]="{'transform': 'translateX(' + getCurrentXPosition() + 'vw)'}">
+      <li *ngFor="let item of pictures; let index = index;">
+        <div (tap)="tap($event)" (pinchstart)="pinch($event)" (pinchend)="pinch($event)" (pinch)="pinch($event)">
+            <app-gallery-image [currentZoom]="currentZoom" (zoomChange)="updateZoom($event)" [image]="item"></app-gallery-image>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="thumbs" id="thumbscont" #thumbscont [ngClass]="{show:(currentZoom === 0)}">
+    <ul #thumbs>
+      <li *ngFor="let item of pictures; let index = index" (click)="swipe(index)"
+          [ngClass]="{active: (currentIndex === index)}">
+        <img
+          [src]="item.thumb"
+        />
+      </li>
+    </ul>
+  </div>
+
+</div>
